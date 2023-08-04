@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class IntegerListImpl implements IntegerList {
 
-    private final Integer[] storage;
+    private Integer[] storage;
     private int size;
 
     public IntegerListImpl() {
@@ -164,5 +164,9 @@ public class IntegerListImpl implements IntegerList {
         if (index < 0 || index > size) {
             throw new InvalidIndexException();
         }
+    }
+
+    private void grow() {
+        storage = Arrays.copyOf(storage, size + size / 2);
     }
 }
